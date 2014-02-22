@@ -1,6 +1,6 @@
 (function(moment) {
     var STRINGS = {
-        now: 'now',
+        nodiff: '',
         year: 'year',
         years: 'years',
         month: 'month',
@@ -21,7 +21,7 @@
     moment.preciseDiff = function(d1, d2) {
         var m1 = moment(d1), m2 = moment(d2);
         if (m1.isSame(m2)) {
-            return STRINGS.now;
+            return STRINGS.nodiff;
         }
         if (m1.isAfter(m2)) {
             var tmp = m1;

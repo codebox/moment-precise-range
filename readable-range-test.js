@@ -6,7 +6,7 @@ describe("preciseDiff", function() {
 
     describe("order", function() {
         it("same date", function() {
-            test('2013-01-01 00:00:00', '2013-01-01 00:00:00', 'now');
+            test('2013-01-01 00:00:00', '2013-01-01 00:00:00', '');
         });
 
         it("first date after second", function() {
