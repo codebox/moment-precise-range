@@ -49,7 +49,7 @@
             dDiff--;
         }
         if (dDiff < 0) {
-            var daysInLastFullMonth = moment(m2.year() + '-' + (m2.month() + 1), "YYYY-MM").subtract('months', 1).daysInMonth();
+            var daysInLastFullMonth = moment(m2.year() + '-' + (m2.month() + 1), "YYYY-MM").subtract(1, 'M').daysInMonth();
             if (daysInLastFullMonth < m1.date()) { // 31/01 -> 2/03
                 dDiff = daysInLastFullMonth + dDiff + (m1.date() - daysInLastFullMonth);
             } else {
