@@ -1,3 +1,7 @@
+if (typeof moment === "undefined" && require) {
+    moment = require('moment');
+}
+
 (function(moment) {
     var STRINGS = {
         nodiff: '',

@@ -1,3 +1,6 @@
+if (typeof require !== "undefined") {
+    require('../../moment-precise-range');
+}
 
 describe("preciseDiff", function() {
     function test(d1, d2, result) {
