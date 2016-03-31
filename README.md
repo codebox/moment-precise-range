@@ -16,6 +16,10 @@ Using the plugin, we can display the exact difference using the same 2 dates:
     var m2 = moment('2014-02-03 15:04:05','YYYY-MM-DD HH:mm:ss');
     var diff = moment.preciseDiff(m1, m2); // '1 month 2 days 3 hours 4 minutes 5 seconds'
 
+To obtain the numeric values rather than a string, pass the value `true` as the third argument to the method:
+
+    var diff = moment.preciseDiff(m1, m2, true); // {years : 0, months : 1, days : 2, hours : 3, minutes : 4, seconds : 5}
+
 ## Usage
 
 ### HTML/Browser
