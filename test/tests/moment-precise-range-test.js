@@ -123,7 +123,7 @@ describe("preciseDiff", function() {
     });
 
     describe("returning value object", function() {
-        function test(d1, d2, yDiff, mDiff, dDiff, hourDiff, minDiff, secDiff) {
+        function test(d1, d2, yDiff, mDiff, dDiff, hourDiff, minDiff, secDiff, firstDateWasLater) {
             var vo = moment.preciseDiff(moment(d1, 'YYYY-MM-DD HH:mm:ss'), moment(d2, 'YYYY-MM-DD HH:mm:ss'), true);
             expect(vo).toEqual({
                 "years"   : yDiff,
@@ -131,21 +131,25 @@ describe("preciseDiff", function() {
                 "days"    : dDiff,
                 "hours"   : hourDiff,
                 "minutes" : minDiff,
-                "seconds" : secDiff
+                "seconds" : secDiff,
+                "firstDateWasLater" : firstDateWasLater
             });
         }
 
         it("all values", function () {
-            test('2001-11-12 13:01:43', '2014-02-01 01:03:01', 12, 2, 19, 12, 1, 18);
+            test('2001-11-12 13:01:43', '2014-02-01 01:03:01', 12, 2, 19, 12, 1, 18, false);
         });
         it("multiple values", function() {
-            test('2013-10-21 10:15:40', '2014-02-02 01:01:01', 0, 3, 11, 14, 45, 21);
-            test('2013-12-31 23:58:10', '2014-01-01 00:02:08', 0, 0,  0,  0,  3, 58);
-            test('2013-12-31 04:08:20', '2014-01-01 01:02:03', 0, 0,  0, 20, 53, 43);
-            test('2013-12-27 05:10:20', '2014-01-02 06:12:30', 0, 0,  6,  1,  2, 10);
-            test('2013-10-21 10:15:40', '2014-02-02 01:01:01', 0, 3, 11, 14, 45, 21);
-            test('2013-11-02 01:00:40', '2014-02-02 01:01:01', 0, 3,  0,  0,  0, 21);
+            test('2013-10-21 10:15:40', '2014-02-02 01:01:01', 0, 3, 11, 14, 45, 21, false);
+            test('2013-12-31 23:58:10', '2014-01-01 00:02:08', 0, 0,  0,  0,  3, 58, false);
+            test('2013-12-31 04:08:20', '2014-01-01 01:02:03', 0, 0,  0, 20, 53, 43, false);
+            test('2013-12-27 05:10:20', '2014-01-02 06:12:30', 0, 0,  6,  1,  2, 10, false);
+            test('2013-10-21 10:15:40', '2014-02-02 01:01:01', 0, 3, 11, 14, 45, 21, false);
+            test('2013-11-02 01:00:40', '2014-02-02 01:01:01', 0, 3,  0,  0,  0, 21, false);
         });
-
+        it("flag set if first date is later than second", function () {
+            test('2014-02-01 01:03:01', '2001-11-12 13:01:43', 12, 2, 19, 12, 1, 18, true);
+        });
     });
+
 });

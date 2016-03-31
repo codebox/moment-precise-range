@@ -54,7 +54,7 @@ if (typeof moment === "undefined" && require) {
     };
 
     moment.preciseDiff = function(d1, d2, returnValueObject) {
-        var m1 = moment(d1), m2 = moment(d2);
+        var m1 = moment(d1), m2 = moment(d2), firstDateWasLater;
         if (m1.isSame(m2)) {
             return STRINGS.nodiff;
         }
@@ -62,6 +62,9 @@ if (typeof moment === "undefined" && require) {
             var tmp = m1;
             m1 = m2;
             m2 = tmp;
+            firstDateWasLater = true;
+        } else {
+            firstDateWasLater = false;
         }
 
         var yDiff = m2.year() - m1.year();
@@ -104,7 +107,8 @@ if (typeof moment === "undefined" && require) {
                 "days"    : dDiff,
                 "hours"   : hourDiff,
                 "minutes" : minDiff,
-                "seconds" : secDiff
+                "seconds" : secDiff,
+                "firstDateWasLater" : firstDateWasLater
             };
         } else {
             return buildStringFromValues(yDiff, mDiff, dDiff, hourDiff, minDiff, secDiff);
