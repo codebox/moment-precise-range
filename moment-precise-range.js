@@ -55,6 +55,8 @@ if (typeof moment === "undefined" && require) {
 
     moment.preciseDiff = function(d1, d2, returnValueObject) {
         var m1 = moment(d1), m2 = moment(d2), firstDateWasLater;
+        m1.add(m2.utcOffset() - m1.utcOffset(), 'minutes'); // shift timezone of m1 to m2
+        
         if (m1.isSame(m2)) {
             return STRINGS.nodiff;
         }
