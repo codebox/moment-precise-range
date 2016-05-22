@@ -3,6 +3,10 @@
   "version": "1.1.1",
   "description": "This is a plugin for the moment.js JavaScript library, to display date/time ranges precisely, in a human-readable format.",
   "main": "moment-precise-range.js",
+  "files": [
+    "*.md",
+    "moment-precise-range.js"
+  ],
   "directories": {
     "test": "test"
   },
