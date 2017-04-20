@@ -1,4 +1,4 @@
-if (typeof moment === "undefined" && require) {
+if (typeof moment === "undefined" && typeof require === 'function') {
     moment = require('moment');
 }
 
