@@ -1,6 +1,6 @@
 {
   "name": "moment-precise-range-plugin",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "This is a plugin for the moment.js JavaScript library, to display date/time ranges precisely, in a human-readable format.",
   "main": "moment-precise-range.js",
   "files": [
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/codebox/moment-precise-range.git"
   },
   "tonicExampleFilename" : "example/example.js",
-  "author": "Rob Dawson <rob@codebox.org.uk> (http://codebox.org.uk)",
+  "author": "Rob Dawson <rob@codebox.net> (https://codebox.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/codebox/moment-precise-range/issues"

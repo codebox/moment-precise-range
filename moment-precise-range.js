@@ -49,6 +49,17 @@ if (typeof moment === "undefined" && typeof require === 'function') {
         return result.join(STRINGS.delimiter);
     }
 
+    function buildValueObject(yDiff, mDiff, dDiff, hourDiff, minDiff, secDiff, firstDateWasLater) {
+        return {
+            "years"   : yDiff,
+            "months"  : mDiff,
+            "days"    : dDiff,
+            "hours"   : hourDiff,
+            "minutes" : minDiff,
+            "seconds" : secDiff,
+            "firstDateWasLater" : firstDateWasLater
+        }
+    }
     moment.fn.preciseDiff = function(d2, returnValueObject) {
         return moment.preciseDiff(this, d2, returnValueObject);
     };
@@ -59,7 +70,11 @@ if (typeof moment === "undefined" && typeof require === 'function') {
         m1.add(m2.utcOffset() - m1.utcOffset(), 'minutes'); // shift timezone of m1 to m2
         
         if (m1.isSame(m2)) {
-            return STRINGS.nodiff;
+            if (returnValueObject) {
+                return buildValueObject(0, 0, 0, 0, 0, 0, false);
+            } else {
+                return STRINGS.nodiff;
+            }
         }
         if (m1.isAfter(m2)) {
             var tmp = m1;
@@ -104,15 +119,7 @@ if (typeof moment === "undefined" && typeof require === 'function') {
         }
 
         if (returnValueObject) {
-            return {
-                "years"   : yDiff,
-                "months"  : mDiff,
-                "days"    : dDiff,
-                "hours"   : hourDiff,
-                "minutes" : minDiff,
-                "seconds" : secDiff,
-                "firstDateWasLater" : firstDateWasLater
-            };
+            return buildValueObject(yDiff, mDiff, dDiff, hourDiff, minDiff, secDiff, firstDateWasLater);
         } else {
             return buildStringFromValues(yDiff, mDiff, dDiff, hourDiff, minDiff, secDiff);
         }
