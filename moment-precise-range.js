@@ -1,5 +1,5 @@
 if (typeof moment === "undefined" && typeof require === 'function') {
-    moment = require('moment');
+    var moment = require('moment');
 }
 
 (function(moment) {
