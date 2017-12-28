@@ -1,7 +1,7 @@
 {
   "name": "moment-precise-range-plugin",
   "version": "1.2.3",
-  "dependencies": {
+  "peerDependencies": {
     "moment": ">=2.9.0"
   },
   "description": "This is a plugin for the moment.js JavaScript library, to display date/time ranges precisely, in a human-readable format.",
